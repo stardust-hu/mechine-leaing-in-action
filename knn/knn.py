@@ -1,6 +1,7 @@
 # coding: utf8
 """
 @Author: yuhao
+
 @Email: yuhao.hu1992@gmail.com
 """
 
@@ -14,7 +15,11 @@ def create_data_set():
     """
     生成样本数据
 
-    :return: group: 样本特征数据; labels: 样本对应标签数据
+    :return: (group, labels)
+
+               group: 样本特征数据
+
+               labels: 样本对应标签数据
     """
     group = np.array([[1.0, 1.1], [1.0, 1.0], [0, 0], [0, 0.1]])
     labels = ['A', 'A', 'B', 'B']
@@ -29,9 +34,9 @@ def plot_data(X, X_label, data_set, labels):
 
     :param X_label: 预测点的标签
 
-    :param data_set: 数据集，np.ndarray类型，大小为(n_samples, n_features)，这里画二维图，n_feature=2
+    :param data_set: 数据集，np.ndarray类型, 大小为(n_samples, n_features), 这里画二维图, n_feature=2
 
-    :param labels: 数据集数据对应标签列表，数据类型为列表或者是一维的np.ndarray
+    :param labels: 数据集数据对应标签列表, 数据类型为列表或者是一维的np.ndarray
     """
     color_map = ['red', 'blue', 'purple', 'gray', 'yellow', 'green', 'pink']
     total_labels = labels + [X_label]
@@ -50,11 +55,11 @@ def classify(X, data_set, labels, k):
     """
     计算输入数据所属的类别
 
-    :param X: 预测点的特征向量, np.ndarray类型, 大小为(1,  n_feature)一维数据, e.g: array([1, 2， 1.2， 4.5])
+    :param X: 预测点的特征向量, np.ndarray类型, 大小为(1,  n_feature)一维数据, e.g: array([1, 2, 1.2, 4.5])
 
-    :param data_set: 数据集，np.ndarray类型，大小为(n_samples, n_features)
+    :param data_set: 数据集，np.ndarray类型, 大小为(n_samples, n_features)
 
-    :param labels: 数据集数据对应标签列表，数据类型为列表或者是一维的np.ndarray
+    :param labels: 数据集数据对应标签列表, 数据类型为列表或者是一维的np.ndarray
 
     :param k: 取和输入数据X距离最近的k个样本
 
