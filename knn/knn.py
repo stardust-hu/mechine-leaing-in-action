@@ -86,5 +86,16 @@ def test1():
     plot_data(X, X_label, group, labels)
 
 
+def test2():
+    """
+    使用 sklearn中的digits数据集进行测试
+    """
+    from sklearn.datasets import load_digits
+    from sklearn.model_selection import train_test_split
+    digits = load_digits()
+    imges = digits['images']
+    target = digits['target']
+
+
 if __name__ == '__main__':
     test1()
