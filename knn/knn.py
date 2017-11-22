@@ -82,7 +82,7 @@ def test1():
     group, labels = create_data_set()
     X = np.array([0.2, 0.2])
     X_label = classify(X, group, labels, 3)
-    print X_label
+    print(X_label)
     plot_data(X, X_label, group, labels)
 
 
