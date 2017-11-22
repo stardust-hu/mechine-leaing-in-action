@@ -132,6 +132,46 @@ def create_tree(feature_data, labels, feature_name):
     return my_tree
 
 
+def classify(input_tree, sample_data, feature_name):
+    """
+    预测
+    :param input_tree: 训练好的树
+    :param sample_data:
+    :param feature_name:
+    :return: class_label
+    """
+    sample_data = np.array(sample_data).flatten()
+    feature_name = np.array(feature_name).flatten()
+
+    first_str = list(input_tree.keys())[0]
+    second_tree = input_tree[first_str]
+    feature_index = np.argmax(feature_name==first_str)
+    for key in second_tree.keys():
+        if sample_data[feature_index] == key:
+            if type(second_tree[key]).__name__ == 'dice':
+                class_label = classify(second_tree[key], sample_data, feature_name)
+            else:
+                class_label = second_tree[key]
+    return class_label
+
+
+def classify_data_set(input_tree, feature_data, feature_name):
+    """
+    预测一批数据
+    :param input_tree:
+    :param feature_data:
+    :param feature_name:
+    :return:labels
+    """
+    labels = []
+    n_sample = feature_data.shape[0]
+    for si in range(n_sample):
+        sample_data = feature_data[si]
+        temp_label = classify(input_tree, sample_data, feature_name)
+        labels.append(temp_label)
+    return labels
+
+
 def test():
     feature_data, labels, feature_name = create_data_set()
 
